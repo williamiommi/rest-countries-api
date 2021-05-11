@@ -4,18 +4,20 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     colors: {
-      white: 'hsl(0, 0%, 100%)',
+      white: '#ffffff',
       gray: {
-        light: 'hsl(0, 0%, 98%)',
-        dark: 'hsl(0, 0%, 52%)',
+        light: '#fafafa',
+        dark: '#858585',
       },
       blue: {
-        text: 'hsl(200, 15%, 8%)',
-        dark: 'hsl(209, 23%, 22%)',
-        veryDark: 'hsl(207, 26%, 17%)'
+        text: '#111517',
+        dark: '#2b3945',
+        veryDark: '#202c37'
       },
     },
     screens: {
+      'tablet': '768px',
+      'tablet-lg': '1024px',
       'desktop': '1440px'
     },
     fontFamily: {

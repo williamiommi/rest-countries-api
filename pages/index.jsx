@@ -1,22 +1,22 @@
-import Head from "next/head";
+import { fetcher } from '../lib/utils';
 // import components
 import Header from "../components/Header";
-import CountryBox from "../components/CountryBox";
+import CountryList from "../components/CountryList";
 
-const countryFakeData = {
-  alpha3Code: 'usa',
-  flag: "https://restcountries.eu/data/usa.svg",
-  name: "United States of America",
-  population: 323947000,
-  region: "Americas",
-  capital: "Washington, D.C.",
-};
-
-export default function Home() {
+export default function Home({ countries }) {
   return (
     <div>
       <Header />
-      <CountryBox {...countryFakeData} />
+      <CountryList countries={countries} />
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  const countries = await fetcher("https://restcountries.eu/rest/v2/all");
+  return {
+    props: {
+      countries
+    }, // will be passed to the page component as props
+  }
 }
