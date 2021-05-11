@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import CountryBox from "../components/CountryBox";
 
 const countryFakeData = {
+  alpha3Code: 'usa',
   flag: "https://restcountries.eu/data/usa.svg",
   name: "United States of America",
   population: 323947000,

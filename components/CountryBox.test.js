@@ -3,6 +3,7 @@ import '@testing-library/jest-dom/extend-expect'
 import CountryBox from "./CountryBox";
 
 export const countryFakeData = {
+  alpha3Code: 'usa',
   flag: "https://restcountries.eu/data/usa.svg",
   name: "United States of America",
   population: 323947000,
