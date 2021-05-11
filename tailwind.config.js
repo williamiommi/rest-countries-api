@@ -25,12 +25,15 @@ module.exports = {
       small: '14px',
       base: '16px',
       h1: '25px',
-      h2: '22px'
+      h2: '22px',
+      h3: '20px'
     },
     extend: {},
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
