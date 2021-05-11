@@ -22,8 +22,10 @@ module.exports = {
       body: ['Nunito Sans', 'sans-serif'],
     },
     fontSize: {
-      'base': '14px',
-      'detail': '16px'
+      small: '14px',
+      base: '16px',
+      h1: '25px',
+      h2: '22px'
     },
     extend: {},
   },
