@@ -11,6 +11,14 @@ export const countryFakeData = {
   capital: "Washington, D.C.",
 };
 
+export const countryFakeDataNoCapital = {
+  alpha3Code: 'usa',
+  flag: "https://restcountries.eu/data/usa.svg",
+  name: "United States of America",
+  population: 323947000,
+  region: "Americas",
+};
+
 describe("CountryBox Component", () => {
   let getByTestId, getByText;
 
@@ -48,6 +56,11 @@ describe("CountryBox Component", () => {
   test("it renders capital", () => {
     expect(getByTestId('capital')).toBeInTheDocument()
     expect(getByTestId('capital')).toHaveTextContent(countryFakeData.capital);
+  });
+
+  test("it not renders capital", () => {
+    const { queryByTestId } = render(<CountryBox {...countryFakeDataNoCapital} />);
+    expect(queryByTestId('capital')).toBeNull();
   });
 
 });

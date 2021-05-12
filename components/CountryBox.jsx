@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 
-export default function CountryBox({
+function CountryBox({
   alpha3Code,
   flag,
   name,
@@ -47,4 +48,6 @@ export default function CountryBox({
       </a>
     </Link>
   );
-}
+};
+
+export default memo(CountryBox);
