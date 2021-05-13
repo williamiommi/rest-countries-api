@@ -13,7 +13,7 @@ function CountryBox({
   return (
     <Link href={`/detail/${alpha3Code}`}>
       <a className="flex flex-col shadow-lg bg-white rounded-md dark:bg-blue-dark">
-        <div className="aspect-w-16 aspect-h-9">
+        <div className="aspect-w-16 aspect-h-9 shadow-sm">
           <Image
             data-testid="image"
             src={flag}

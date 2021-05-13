@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import '../styles/globals.css'
-import { isDarkOnLoad } from '../lib/utils';
+import { useEffect } from "react";
+import "../styles/globals.css";
+import { isDarkOnLoad } from "../lib/utils";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
