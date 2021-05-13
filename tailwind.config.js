@@ -30,7 +30,11 @@ module.exports = {
       h2: '22px',
       h3: '20px'
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        'simple' : '0 0 3px 1px rgba(0, 0, 0, 0.1)',
+      }
+    },
   },
   variants: {
     extend: {},
