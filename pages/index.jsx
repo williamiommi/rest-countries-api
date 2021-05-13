@@ -14,15 +14,14 @@ export default function Home({ countries, regions }) {
   const handleRegionSearch = (term) =>
     setFilteredCountries(filterByRegion(countries, term));
   return (
-    <div>
-      <Header />
+    <>
       <Filters
         handleTextSearch={handleTextSearch}
         handleRegionSearch={handleRegionSearch}
         regions={regions}
       />
       <CountryList countries={filteredCountries} />
-    </div>
+    </>
   );
 }
 
