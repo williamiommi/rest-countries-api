@@ -9,6 +9,7 @@ import useClickOutside from "../lib/hooks/useClickOutside";
 
 const RegionFilter = ({ regions, handleRegionSearch }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedRegion, setSelectedRegion] = useState(false);
   const [filteredRegions, setFilteredRegions] = useState(regions);
   const wrapperRef = useRef();
   useClickOutside(wrapperRef, () => setIsOpen(false));
@@ -30,7 +31,9 @@ const RegionFilter = ({ regions, handleRegionSearch }) => {
         return region;
       })
     );
+    setSelectedRegion(regionToSearch);
     handleRegionSearch(regionToSearch);
+    setIsOpen(false);
   };
   return (
     <div
@@ -41,7 +44,7 @@ const RegionFilter = ({ regions, handleRegionSearch }) => {
         className="flex flex-row items-center justify-between w-full p-4 text-left shadow-md rounded-md bg-white dark:bg-blue-dark"
         onClick={handlerClick}
       >
-        {placeholder}
+        {selectedRegion || placeholder}
         {isOpen ? (
           <ChevronUpIcon className="w-5" />
         ) : (
