@@ -29,7 +29,6 @@ export default function Home({ countries, regions }) {
 export async function getStaticProps(context) {
   const countries = await getCountries();
   const regions = getUniqRegions(countries);
-  console.log(regions);
   return {
     props: {
       countries,
