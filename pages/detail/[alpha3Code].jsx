@@ -60,7 +60,7 @@ export default function Detail({ country, error }) {
                 <DetailLabel label="Sub Region: " value={country.subregion} />
               )}
               {country.capital && (
-                <DetailLabel label="Sub Region: " value={country.capital} />
+                <DetailLabel label="Capital: " value={country.capital} />
               )}
             </div>
             <div>

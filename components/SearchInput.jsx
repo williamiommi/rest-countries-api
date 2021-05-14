@@ -14,6 +14,6 @@ const SearchInput = ({ handleTextSearch }) => {
       />
     </div>
   );
-}
+};
 
 export default memo(SearchInput);

@@ -21,7 +21,7 @@ const RegionFilter = ({ selectedRegion, regions, handleRegionSearch }) => {
         dataset: { id, isSelected },
       },
     } = e;
-    handleRegionSearch(isSelected === 'true' ? '' : id);
+    handleRegionSearch(isSelected === "true" ? "" : id);
     setIsOpen(false);
   };
   return (

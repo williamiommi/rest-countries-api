@@ -1,26 +1,24 @@
-import { memo } from 'react';
+import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-function CountryBox({
-  alpha3Code,
-  flag,
-  name,
-  population,
-  region,
-  capital,
-}) {
+function CountryBox({ alpha3Code, flag, name, population, region, capital }) {
   return (
     <Link href={`/detail/${alpha3Code}`}>
-      <a className="flex flex-col shadow-lg bg-white rounded-md dark:bg-blue-dark">
+      <a
+        data-testid="country-box"
+        className="flex flex-col shadow-lg bg-white rounded-md dark:bg-blue-dark"
+      >
         <div className="aspect-w-16 aspect-h-9 shadow-sm">
-          <Image
-            data-testid="image"
-            src={flag}
-            alt={name}
-            layout="fill"
-            className="object-cover rounded-t-md"
-          />
+          {flag && (
+            <Image
+              data-testid="image"
+              src={flag}
+              alt={name}
+              layout="fill"
+              className="object-cover rounded-t-md"
+            />
+          )}
         </div>
         <section className="p-4 pb-8">
           <p data-testid="name" className="mb-4 font-extrabold text-h3">
@@ -48,6 +46,6 @@ function CountryBox({
       </a>
     </Link>
   );
-};
+}
 
 export default memo(CountryBox);

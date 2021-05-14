@@ -1,9 +1,9 @@
 import { cleanup, render } from "@testing-library/react";
-import '@testing-library/jest-dom/extend-expect'
+import "@testing-library/jest-dom/extend-expect";
 import CountryBox from "./CountryBox";
 
 export const countryFakeData = {
-  alpha3Code: 'usa',
+  alpha3Code: "usa",
   flag: "https://restcountries.eu/data/usa.svg",
   name: "United States of America",
   population: 323947000,
@@ -12,7 +12,7 @@ export const countryFakeData = {
 };
 
 export const countryFakeDataNoCapital = {
-  alpha3Code: 'usa',
+  alpha3Code: "usa",
   flag: "https://restcountries.eu/data/usa.svg",
   name: "United States of America",
   population: 323947000,
@@ -20,12 +20,11 @@ export const countryFakeDataNoCapital = {
 };
 
 describe("CountryBox Component", () => {
-  let getByTestId, getByText;
+  let queryByTestId;
 
   beforeEach(() => {
     const component = render(<CountryBox {...countryFakeData} />);
-    getByTestId = component.getByTestId;
-    getByText = component.getByText;
+    queryByTestId = component.queryByTestId;
   });
 
   afterEach(cleanup);
@@ -34,33 +33,41 @@ describe("CountryBox Component", () => {
     render(<CountryBox />);
   });
 
-  test("it renders src image", () => {
-    expect(getByTestId('image')).toHaveAttribute('src', countryFakeData.flag);
+  test("it renders image", () => {
+    expect(queryByTestId("image")).toBeInTheDocument();
+  });
+
+  test("it renders alt image", () => {
+    expect(queryByTestId("image")).toHaveAttribute("alt", countryFakeData.name);
   });
 
   test("it renders name", () => {
-    expect(getByTestId('name')).toBeInTheDocument()
-    expect(getByTestId('name')).toHaveTextContent(countryFakeData.name);
+    expect(queryByTestId("name")).toBeInTheDocument();
+    expect(queryByTestId("name")).toHaveTextContent(countryFakeData.name);
   });
 
   test("it renders population w/ localeString", () => {
-    expect(getByTestId('population')).toBeInTheDocument()
-    expect(getByTestId('population')).toHaveTextContent(countryFakeData.population.toLocaleString())
+    expect(queryByTestId("population")).toBeInTheDocument();
+    expect(queryByTestId("population")).toHaveTextContent(
+      countryFakeData.population.toLocaleString()
+    );
   });
 
   test("it renders region", () => {
-    expect(getByTestId('region')).toBeInTheDocument()
-    expect(getByTestId('region')).toHaveTextContent(countryFakeData.region);
+    expect(queryByTestId("region")).toBeInTheDocument();
+    expect(queryByTestId("region")).toHaveTextContent(countryFakeData.region);
   });
 
   test("it renders capital", () => {
-    expect(getByTestId('capital')).toBeInTheDocument()
-    expect(getByTestId('capital')).toHaveTextContent(countryFakeData.capital);
+    expect(queryByTestId("capital")).toBeInTheDocument();
+    expect(queryByTestId("capital")).toHaveTextContent(countryFakeData.capital);
   });
 
   test("it not renders capital", () => {
-    const { queryByTestId } = render(<CountryBox {...countryFakeDataNoCapital} />);
-    expect(queryByTestId('capital')).toBeNull();
+    cleanup();
+    const { queryByTestId: scopedQueryByTestId } = render(
+      <CountryBox {...countryFakeDataNoCapital} />
+    );
+    expect(scopedQueryByTestId("capital")).toBeNull();
   });
-
 });
