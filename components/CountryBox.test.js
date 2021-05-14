@@ -11,6 +11,23 @@ export const countryFakeData = {
   capital: "Washington, D.C.",
 };
 
+export const countryFakeDataPopulationZero = {
+  alpha3Code: "usa",
+  flag: "https://restcountries.eu/data/usa.svg",
+  name: "United States of America",
+  population: 0,
+  region: "Americas",
+  capital: "Washington, D.C.",
+};
+
+export const countryFakeDataPopulationNull = {
+  alpha3Code: "usa",
+  flag: "https://restcountries.eu/data/usa.svg",
+  name: "United States of America",
+  region: "Americas",
+  capital: "Washington, D.C.",
+};
+
 export const countryFakeDataNoCapital = {
   alpha3Code: "usa",
   flag: "https://restcountries.eu/data/usa.svg",
@@ -44,6 +61,22 @@ describe("CountryBox Component", () => {
   test("it renders name", () => {
     expect(queryByTestId("name")).toBeInTheDocument();
     expect(queryByTestId("name")).toHaveTextContent(countryFakeData.name);
+  });
+
+  test("it not renders zero population", () => {
+    cleanup();
+    const { queryByTestId: scopedQueryByTestId } = render(
+      <CountryBox {...countryFakeDataPopulationZero} />
+    );
+    expect(scopedQueryByTestId("population")).toBeFalsy();
+  });
+
+  test("it not renders null population", () => {
+    cleanup();
+    const { queryByTestId: scopedQueryByTestId } = render(
+      <CountryBox {...countryFakeDataPopulationNull} />
+    );
+    expect(scopedQueryByTestId("population")).toBeFalsy();
   });
 
   test("it renders population w/ localeString", () => {

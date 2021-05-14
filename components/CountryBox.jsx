@@ -2,6 +2,8 @@ import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+import Label from "./Label";
+
 function CountryBox({ alpha3Code, flag, name, population, region, capital }) {
   return (
     <Link href={`/detail/${alpha3Code}`}>
@@ -24,24 +26,13 @@ function CountryBox({ alpha3Code, flag, name, population, region, capital }) {
           <p data-testid="name" className="mb-4 font-extrabold text-h3">
             {name}
           </p>
-          {population > 0 && (
-            <p data-testid="population">
-              <label className="font-semibold">Population: </label>
-              {population.toLocaleString()}
-            </p>
-          )}
-          {region && (
-            <p data-testid="region">
-              <label className="font-semibold">Region: </label>
-              {region}
-            </p>
-          )}
-          {capital && (
-            <p data-testid="capital">
-              <label className="font-semibold">Capital: </label>
-              {capital}
-            </p>
-          )}
+          <Label
+            testId="population"
+            label="Population: "
+            value={population?.toLocaleString()}
+          />
+          <Label testId="region" label="Region: " value={region} />
+          <Label testId="capital" label="Capital: " value={capital} />
         </section>
       </a>
     </Link>

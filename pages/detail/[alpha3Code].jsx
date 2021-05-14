@@ -7,7 +7,7 @@ import getCountriesAlpha3Code from "../../lib/api/getCountriesAlpha3Code";
 import getCountryDetail from "../../lib/api/getCountryDetail";
 
 import Button from "../../components/Button";
-import DetailLabel from "../../components/DetailLabel";
+import Label from "../../components/Label";
 
 export default function Detail({ country, error }) {
   const router = useRouter();
@@ -23,7 +23,7 @@ export default function Detail({ country, error }) {
       <div className="py-20">
         <Button
           icon={<ArrowLeftIcon className="w-5 pr-2" />}
-          anchorClass='w-28 shadow-simple'
+          anchorClass="w-28 shadow-simple"
           linkName="Back"
           linkUrl="/"
         />
@@ -44,56 +44,70 @@ export default function Detail({ country, error }) {
           <p className="pt-10 pb-5 font-extrabold text-h1">{country.name}</p>
           <div className="flex flex-col pb-10 desktop:flex-row">
             <div className="pb-8 desktop:pb-0 desktop:pr-40">
-              {country.nativeName && (
-                <DetailLabel label="Native Name: " value={country.nativeName} />
-              )}
-              {country.population && (
-                <DetailLabel
-                  label="Population: "
-                  value={country.population.toLocaleString()}
-                />
-              )}
-              {country.region && (
-                <DetailLabel label="Region: " value={country.region} />
-              )}
-              {country.subregion && (
-                <DetailLabel label="Sub Region: " value={country.subregion} />
-              )}
-              {country.capital && (
-                <DetailLabel label="Capital: " value={country.capital} />
-              )}
+              <Label
+                testId="nativeName"
+                label="Native Name: "
+                value={country.nativeName}
+                isDetail
+              />
+              <Label
+                testId="population"
+                label="Population: "
+                value={country.population?.toLocaleString()}
+                isDetail
+              />
+              <Label
+                testId="region"
+                label="Region: "
+                value={country.region}
+                isDetail
+              />
+              <Label
+                testId="subRegion"
+                label="Sub Region: "
+                value={country.subregion}
+                isDetail
+              />
+              <Label
+                testId="capital"
+                label="Capital: "
+                value={country.capital}
+                isDetail
+              />
             </div>
             <div>
-              {country.topLevelDomain && (
-                <DetailLabel
-                  label="Top Level Domain: "
-                  value={country.topLevelDomain.join(", ")}
-                />
-              )}
-              {country.currencies && (
-                <DetailLabel
-                  label="Currencies: "
-                  value={country.currencies.join(", ")}
-                />
-              )}
-              {country.languages && (
-                <DetailLabel
-                  label="Languages: "
-                  value={country.languages.join(", ")}
-                />
-              )}
+              <Label
+                testId="topLevelDomain"
+                label="Top Level Domain: "
+                value={country.topLevelDomain?.join(", ")}
+                isDetail
+              />
+              <Label
+                testId="currencies"
+                label="Currencies: "
+                value={country.currencies.join(", ")}
+                isDetail
+              />
+              <Label
+                label="languages"
+                label="Languages: "
+                value={country.languages.join(", ")}
+                isDetail
+              />
             </div>
           </div>
           {country.borders && (
             <div className="flex flex-col desktop:flex-row desktop:items-baseline">
-              <p className="font-semibold text-base w-1/4 pb-5 desktop:pb-0">Border Countries</p>
-              <ul className='flex flex-row flex-wrap w-3/4'>
+              <p className="font-semibold text-base w-1/4 pb-5 desktop:pb-0">
+                Border Countries:
+              </p>
+              <ul className="flex flex-row flex-wrap w-3/4">
                 {country.borders.map((border) => (
                   <li>
                     <Button
                       key={border.name}
                       linkName={border.name}
-                      anchorClass='shadow-simple mr-4 mb-4'
+                      anchorClass="shadow-simple mr-4 mb-4"
                       linkUrl={`/detail/${border.alpha3Code}`}
                     />
                   </li>
