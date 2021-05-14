@@ -1,6 +1,15 @@
-const { defaults } = require('jest-config');
+const { defaults } = require("jest-config");
 
 module.exports = {
-    ...defaults,
-    setupFiles: ['./jest/setupTest.js'],
+  ...defaults,
+  reporters: [
+    "default",
+    [
+      "./node_modules/jest-html-reporter",
+      {
+        pageTitle: "Test Report",
+      },
+    ],
+  ],
+  setupFiles: ["./jest/setupTest.js"],
 };
