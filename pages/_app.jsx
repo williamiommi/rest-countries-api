@@ -1,24 +1,12 @@
-import { useEffect } from "react";
-import Head from 'next/head';
 import "../styles/globals.css";
-import { isDarkOnLoad } from "../lib/utils";
-import Header from "../components/Header";
+import DefaultLayout from "../components/DefaultLayout";
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    isDarkOnLoad();
-  }, []);
+  const Layout = Component.layout || DefaultLayout;
   return (
-    <>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        ></meta>
-      </Head>
-      <Header />
+    <Layout>
       <Component {...pageProps} />
-    </>
+    </Layout>
   );
 }
 
