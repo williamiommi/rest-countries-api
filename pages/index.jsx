@@ -1,31 +1,33 @@
-import { useState } from "react";
 import getCountries from "../lib/api/getCountries";
-import { filterByName, filterByRegion, getUniqRegions } from "../lib/utils";
+import { getUniqRegions } from "../lib/utils";
 // import components
-import Header from "../components/Header";
 import CountryList from "../components/CountryList";
-import SearchInput from "../components/SearchInput";
 import Filters from "../components/Filters";
+import useFilterState from "../lib/hooks/useFilterState";
 
 export default function Home({ countries, regions }) {
-  const [filteredCountries, setFilteredCountries] = useState(countries);
-  const handleTextSearch = (term) =>
-    setFilteredCountries(filterByName(countries, term));
-  const handleRegionSearch = (term) =>
-    setFilteredCountries(filterByRegion(countries, term));
+  const {
+    selectedRegion,
+    filteredCountries,
+    filteredRegions,
+    setSearchTerm,
+    setSelectedRegion,
+  } = useFilterState(countries, regions);
+
   return (
     <>
       <Filters
-        handleTextSearch={handleTextSearch}
-        handleRegionSearch={handleRegionSearch}
-        regions={regions}
+        selectedRegion={selectedRegion}
+        regions={filteredRegions}
+        handleRegionSearch={setSelectedRegion}
+        handleTextSearch={setSearchTerm}
       />
       <CountryList countries={filteredCountries} />
     </>
   );
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const countries = await getCountries();
   const regions = getUniqRegions(countries);
   return {

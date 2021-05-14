@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { memo, useState, useRef } from "react";
 import {
   ChevronDownIcon,
   ChevronUpIcon,
@@ -7,10 +7,8 @@ import {
 
 import useClickOutside from "../lib/hooks/useClickOutside";
 
-const RegionFilter = ({ regions, handleRegionSearch }) => {
+const RegionFilter = ({ selectedRegion, regions, handleRegionSearch }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState(false);
-  const [filteredRegions, setFilteredRegions] = useState(regions);
   const wrapperRef = useRef();
   useClickOutside(wrapperRef, () => setIsOpen(false));
   const placeholder = "Filter by Region";
@@ -20,19 +18,10 @@ const RegionFilter = ({ regions, handleRegionSearch }) => {
   const handlerClickRegion = (e) => {
     const {
       currentTarget: {
-        dataset: { id },
+        dataset: { id, isSelected },
       },
     } = e;
-    let regionToSearch;
-    setFilteredRegions(
-      filteredRegions.map((region) => {
-        region.selected = region.name === id ? !region.selected : false;
-        if (region.name === id && region.selected) regionToSearch = id;
-        return region;
-      })
-    );
-    setSelectedRegion(regionToSearch);
-    handleRegionSearch(regionToSearch);
+    handleRegionSearch(isSelected === 'true' ? '' : id);
     setIsOpen(false);
   };
   return (
@@ -53,11 +42,12 @@ const RegionFilter = ({ regions, handleRegionSearch }) => {
       </button>
       {isOpen && (
         <ul className="absolute w-full bg-white dark:bg-blue-dark top-full m-2 z-10 shadow-md rounded-md">
-          {filteredRegions.map((region) => (
+          {regions.map((region) => (
             <li key={region.name}>
               <button
                 className="flex flex-row items-center justify-between w-full text-left px-4 py-2 opacity-80 hover:opacity-100"
                 data-id={region.name}
+                data-is-selected={region.selected}
                 onClick={handlerClickRegion}
               >
                 <span>{region.name}</span>
@@ -71,4 +61,4 @@ const RegionFilter = ({ regions, handleRegionSearch }) => {
   );
 };
 
-export default RegionFilter;
+export default memo(RegionFilter);
