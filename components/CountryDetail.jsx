@@ -88,7 +88,7 @@ function CountryDetail({ country }) {
               />
             </div>
           </div>
-          {country.borders && (
+          {country.borders && country.borders.length > 0 && (
             <div className="flex flex-col desktop:flex-row desktop:items-baseline">
               <p className="font-semibold text-base w-1/4 pb-5 desktop:pb-0">
                 Border Countries:
