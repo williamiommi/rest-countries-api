@@ -24,21 +24,18 @@ const RegionFilter = ({ selectedRegion, regions, handleRegionSearch }) => {
     handleRegionSearch(isSelected === "true" ? "" : id);
     setIsOpen(false);
   };
+  const Icon = isOpen ? ChevronUpIcon : ChevronDownIcon;
   return (
     <div
       ref={wrapperRef}
-      className="relative flex flex-col items-center w-2/12"
+      className="relative flex flex-col items-center min-w-1/2 tablet:min-w-0 tablet:w-1/4 desktop:w-1/6"
     >
       <button
-        className="flex flex-row items-center justify-between w-full p-4 text-left shadow-md rounded-md bg-white dark:bg-blue-dark"
+        className="flex flex-row items-center justify-between w-full px-5 py-4 text-left shadow-md rounded-md bg-white dark:bg-blue-dark"
         onClick={handlerClick}
       >
         {selectedRegion || placeholder}
-        {isOpen ? (
-          <ChevronUpIcon className="w-5" />
-        ) : (
-          <ChevronDownIcon className="w-5" />
-        )}
+        <Icon className="w-5"/>
       </button>
       {isOpen && (
         <ul className="absolute w-full bg-white dark:bg-blue-dark top-full m-2 z-10 shadow-md rounded-md">

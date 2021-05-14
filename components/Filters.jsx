@@ -9,7 +9,7 @@ const Filters = ({
   handleRegionSearch,
 }) => {
   return (
-    <div className="mx-auto flex flex-row items-center justify-between py-10 px-5 desktop:container desktop:px-0">
+    <div className="mx-auto flex flex-col items-start justify-between py-10 px-5 tablet:items-center tablet:flex-row desktop:container desktop:px-0">
       <SearchInput handleTextSearch={handleTextSearch} />
       <RegionFilter
         selectedRegion={selectedRegion}
