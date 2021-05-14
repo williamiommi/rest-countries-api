@@ -151,9 +151,10 @@ describe("CountryDetail Component", () => {
 
   test("it not renders Border Countries", () => {
     cleanup();
-    const { queryByTestId: scopedQueryByTestId } = render(
+    const { container, queryByTestId: scopedQueryByTestId } = render(
       <CountryDetail country={countryFakeDataNoBorders} />
     );
+    expect(container).not.toHaveTextContent("Border Countries:");
     expect(scopedQueryByTestId("country-border")).toBeFalsy();
   });
 });
