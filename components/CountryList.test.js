@@ -20,6 +20,14 @@ export const countries = [
     capital: "Rome",
   },
   {
+    alpha3Code: "BEL",
+    flag: "https://restcountries.eu/data/bel.svg",
+    name: "Belgium",
+    population: 11319511,
+    region: "Europe",
+    capital: "Brussels",
+  },
+  {
     alpha3Code: "JPN",
     flag: "https://restcountries.eu/data/jpn.svg",
     name: "Japan",
@@ -34,8 +42,8 @@ describe("CountryList Component", () => {
     render(<CountryList countries={countries} />);
   });
 
-  test("it contains 3 box", () => {
+  test("it contains 4 box", () => {
     const { queryAllByTestId } = render(<CountryList countries={countries} />);
-    expect(queryAllByTestId("country-box")).toHaveLength(3);
+    expect(queryAllByTestId("country-box")).toHaveLength(4);
   });
 });
