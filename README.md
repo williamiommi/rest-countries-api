@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-wkpyQiT6S](https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-wkpyQiT6S)
 - Live Site URL: [https://rest-countries-api-orcin-eight.vercel.app](https://rest-countries-api-orcin-eight.vercel.app/)
 
 ## My process
