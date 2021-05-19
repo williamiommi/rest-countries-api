@@ -23,9 +23,9 @@ function CountryBox({ alpha3Code, flag, name, population, region, capital }) {
           )}
         </div>
         <section className="p-4 pb-8">
-          <p data-testid="name" className="mb-4 font-extrabold text-h3">
+          <h3 data-testid="name" className="mb-4 font-extrabold text-h3">
             {name}
-          </p>
+          </h3>
           <Label
             testId="population"
             label="Population: "
