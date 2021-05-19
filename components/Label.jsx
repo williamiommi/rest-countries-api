@@ -11,7 +11,7 @@ const Label = ({ testId, label, value, isDetail }) => {
 
   return (
     <p data-testid={testId}>
-      <label className="font-semibold">{label}</label>
+      <span className="font-semibold">{label}</span>
       {value}
     </p>
   );
