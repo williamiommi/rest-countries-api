@@ -1,5 +1,4 @@
 import { memo } from "react";
-import Image from "next/image";
 import { ArrowLeftIcon } from "@heroicons/react/solid";
 
 import Label from "./Label";
@@ -20,15 +19,7 @@ function CountryDetail({ country }) {
 
       <div className="flex flex-col desktop:flex-row">
         <div className="flex justify-center w-full desktop:justify-start">
-          <Image
-            data-testid="image"
-            src={country.flag}
-            alt={country.name}
-            width={600}
-            height={400}
-            layout="intrinsic"
-            className="block border-gray-dark border-1"
-          />
+          <img src={country.flag} alt={country.name} />
         </div>
         <div className="w-full desktop:pl-10">
           <p data-testid="name" className="pt-10 pb-5 font-extrabold text-h1">
@@ -95,7 +86,7 @@ function CountryDetail({ country }) {
               </p>
               <ul className="flex flex-row flex-wrap w-3/4">
                 {country.borders.map((border) => (
-                  <li data-testid='country-border' key={border.name}>
+                  <li data-testid="country-border" key={border.name}>
                     <Button
                       linkName={border.name}
                       anchorClass="shadow-simple mr-4 mb-4"
