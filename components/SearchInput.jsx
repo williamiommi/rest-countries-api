@@ -9,6 +9,7 @@ const SearchInput = ({ handleTextSearch }) => {
         name="input"
         data-testid="input"
         type="text"
+        title="Search for a country..."
         placeholder="Search for a country..."
         className="w-full p-4 rounded-md bg-white text-gray-dark placeholder-gray-dark dark:bg-blue-dark dark:text-white dark:placeholder-white"
         onChange={(e) => handleTextSearch(e.target.value)}
