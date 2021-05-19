@@ -18,8 +18,8 @@ function CountryDetail({ country }) {
         />
       </div>
 
-      <div className="flex flex-col tablet:flex-row">
-        <div className="flex justify-center w-full tablet:w-2/4 tablet:justify-start">
+      <div className="flex flex-col desktop:flex-row">
+        <div className="flex justify-center w-full desktop:justify-start">
           <Image
             data-testid="image"
             src={country.flag}
@@ -30,7 +30,7 @@ function CountryDetail({ country }) {
             className="block border-gray-dark border-1"
           />
         </div>
-        <div className="w-full tablet:w-2/4 tablet:pl-10">
+        <div className="w-full desktop:pl-10">
           <p data-testid="name" className="pt-10 pb-5 font-extrabold text-h1">
             {country.name}
           </p>
