@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang='en'>
         <Head>
           <meta name="description" content="Rest Countries API" />
           <link rel="icon" href="/favicon.ico" />
